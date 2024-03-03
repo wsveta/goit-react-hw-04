@@ -23,6 +23,9 @@ const SearchBar = ({ onSearch, value }) => {
     <header className={css.headerContainer}>
       <Toaster />
       <form className={css.searchForm} value={value} onSubmit={handleSearch}>
+        <button className={css.searchButton} type="submit">
+          <IoSearchOutline size={25} className={css.searchIcon} />
+        </button>
         <input
           className={css.input}
           name="searchBar"
@@ -31,9 +34,6 @@ const SearchBar = ({ onSearch, value }) => {
           autoComplete="off"
           placeholder="Search for images..."
         />
-        <button className={css.searchButton} type="submit">
-          <IoSearchOutline size={25} className={css.searchIcon} />
-        </button>
       </form>
     </header>
   );

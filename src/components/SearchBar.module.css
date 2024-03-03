@@ -15,6 +15,7 @@
 .searchIcon {
 }
 .input {
+  margin-left: 20px;
   padding: 10px;
   border: transparent;
   outline: transparent;
