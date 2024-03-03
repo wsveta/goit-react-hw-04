@@ -14,7 +14,3 @@ export const fetchImages = async (searchQuery, page) => {
   });
   return response.data;
 };
-
-
-//https://api.unsplash.com/search/photos?query=cat&per_page=20&page=1
-//https://api.unsplash.com/search/photos?page=1&query=office

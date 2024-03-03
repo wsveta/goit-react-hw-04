@@ -1,5 +1,5 @@
 .gallery {
-   max-width: 1200px;
+  max-width: 1200px;
   -webkit-columns: 15em;
   -moz-columns: 15em;
   columns: 15em;
@@ -13,4 +13,8 @@
 .imageWrapper {
   overflow: hidden;
   border-radius: 20px;
+}
+.spinWrapper {
+  justify-content: center;
+  display: flex;
 }

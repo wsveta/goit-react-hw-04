@@ -6,7 +6,6 @@ import { fetchImages } from "../images-api";
 import LoadMoreBtn from "./LoadMoreBtn";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
-import { MutatingDots } from "react-loader-spinner";
 import toast from "react-hot-toast";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
   const handleLoadMore = () => {
     setPage(page + 1);
     setLoad(true);
-  }
+  };
 
   useEffect(() => {
     if (searchQuery === "") {
@@ -42,7 +41,7 @@ function App() {
         const data = await fetchImages(searchQuery, page);
         if (data.results.length === 0) {
           toast("No images were found", {
-            duration: 1500
+            duration: 1500,
           });
           return;
         }
@@ -62,24 +61,12 @@ function App() {
   return (
     <div>
       <SearchBar onSearch={handleSearch} value={searchQuery} />
-      <ImageGallery images={images} load={load} setLoad={setLoad}/>
-      {load && (
-        <MutatingDots
-          className="spin"
-          visible={true}
-          height="100"
-          width="100"
-          color="#bebebe"
-          secondaryColor="grey"
-          radius="12.5"
-          ariaLabel="mutating-dots-loading"
-          wrapperStyle={{}}
-          wrapperClass="spinWrapper"
-        />
+      <ImageGallery images={images} load={load} setLoad={setLoad} />
+      {!isLoading && images.length > 0 && images.length < totalImages && (
+        <LoadMoreBtn onClick={handleLoadMore} />
       )}
-      {(!isLoading && images.length > 0 && images.length < totalImages) && <LoadMoreBtn onClick={handleLoadMore}/>}
-      {isLoading && <Loader/>}
-      {error && <ErrorMessage/>}
+      {isLoading && <Loader />}
+      {error && <ErrorMessage />}
     </div>
   );
 }
