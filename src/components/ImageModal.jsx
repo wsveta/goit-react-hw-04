@@ -25,7 +25,7 @@ const ImageModal = ({ closeModal, isModalOpen, image }) => {
         <button className={css.modalBtn} onClick={closeModal}>
         <RxCross1 size={30} className={css.closeIcon}/>
           </button>
-          <h1>Photographer: {image.user.name}</h1>
+          <h1 className={css.modalTitle}>Photographer: {image.user.name}</h1>
           {image.user.instagram_username !== null && (
             <a
               href={`https://www.instagram.com/${image.user.instagram_username}`}
@@ -35,10 +35,10 @@ const ImageModal = ({ closeModal, isModalOpen, image }) => {
           )}
           {image.user.twitter_username !== null && (
             <a href={`https://www.titter.com/${image.user.twitter_username}`}>
-              {image.user.location !== null && (
-                <p>Location: {image.user.location}</p>
-              )}
               <LuTwitter className={css.twitterIcon} size={30} />
+              {image.user.location !== null && (
+                <p className={css.modalLocation}>Location: {image.user.location}</p>
+              )}
             </a>
           )}
           
