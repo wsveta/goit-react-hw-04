@@ -1,0 +1,27 @@
+
+.searchForm {
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
+  width: 420px;
+  display: inline-flex;
+}
+.searchButton {
+  border: transparent;
+  outline: transparent;
+  background-color: transparent;
+}
+.searchIcon {
+}
+.input {
+  padding: 10px;
+  border: transparent;
+  outline: transparent;
+  background-color: transparent;
+  font-size: 25px;
+}
+
+.input::placeholder {
+    color: black;
+}

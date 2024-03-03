@@ -1,0 +1,36 @@
+.modalContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.modalInfoContainer {
+  width: 50%;
+  text-align: left;
+  padding: 10px;
+}
+
+.modalImage {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalBtn {
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 20px;
+  border: transparent;
+  outline: transparent;
+  background-color: transparent;
+}
+.closeIcon, .instagramIcon, .twitterIcon {
+  transition: color 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  color: #aeaeae;
+}
+.closeIcon:hover,
+.instagramIcon:hover,
+.twitterIcon:hover {
+  color: black;
+}

@@ -1,0 +1,16 @@
+.gallery {
+   max-width: 1200px;
+  -webkit-columns: 15em;
+  -moz-columns: 15em;
+  columns: 15em;
+  padding: 50px;
+  margin: 0 auto;
+}
+.gallery li {
+  margin-bottom: 10px;
+}
+
+.imageWrapper {
+  overflow: hidden;
+  border-radius: 20px;
+}
