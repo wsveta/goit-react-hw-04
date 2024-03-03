@@ -34,7 +34,7 @@ const ImageModal = ({ closeModal, isModalOpen, image }) => {
             </a>
           )}
           {image.user.twitter_username !== null && (
-            <a href={`https://www.titter.com/${image.user.twitter_username}`}>
+            <a href={`https://www.twitter.com/${image.user.twitter_username}`}>
               <LuTwitter className={css.twitterIcon} size={30} />
               {image.user.location !== null && (
                 <p className={css.modalLocation}>Location: {image.user.location}</p>
