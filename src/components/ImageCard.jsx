@@ -1,33 +1,19 @@
-import { useState } from "react";
 import css from "./ImageCard.module.css";
-import ImageModal from "./ImageModal";
 
-const ImageCard = ({ image, setLoad }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const ImageCard = ({ image, setLoader, onOpen }) => {
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
   const handleLoadGallery = () => {
-    setLoad(false);
+    setLoader(false);
   };
+
   return (
     <div className={css.imageWrapper}>
       <img
         onLoad={handleLoadGallery}
-        onClick={handleOpenModal}
+        onClick={() => onOpen(image)}
         className={css.image}
         src={image.urls.small}
         alt={image.alt_description}
-      />
-      <ImageModal
-        closeModal={handleCloseModal}
-        isModalOpen={isModalOpen}
-        image={image}
       />
     </div>
   );

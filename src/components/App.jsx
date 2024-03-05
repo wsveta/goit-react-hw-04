@@ -7,18 +7,33 @@ import LoadMoreBtn from "./LoadMoreBtn";
 import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import toast from "react-hot-toast";
+import ImageModal from "./ImageModal";
+import Modal from "react-modal";
+Modal.setAppElement("#root");
 
 function App() {
   const [totalImages, setTotalImages] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); //стан повідомлення про завантаження нових зображень
   const [error, setError] = useState(false);
-  const [load, setLoad] = useState(false);
+  const [loader, setLoader] = useState(false); // стан анімації завантаження
+  const [modalContent, setModalContent] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = (content) => {
+    setIsModalOpen(true);
+    setModalContent(content);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleSearch = (newQuery) => {
     setSearchQuery(newQuery);
+    setModalContent({});
     setPage(1);
     setImages([]);
     setTotalImages(0);
@@ -26,7 +41,7 @@ function App() {
 
   const handleLoadMore = () => {
     setPage(page + 1);
-    setLoad(true);
+    setLoader(true);
   };
 
   useEffect(() => {
@@ -61,12 +76,29 @@ function App() {
   return (
     <div>
       <SearchBar onSearch={handleSearch} value={searchQuery} />
-      <ImageGallery images={images} load={load} setLoad={setLoad} />
+      <ImageGallery
+        onOpen={handleOpenModal}
+        images={images}
+        loader={loader}
+        setLoader={setLoader}
+      />
       {!isLoading && images.length > 0 && images.length < totalImages && (
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
+      <Modal
+        isOpen={isModalOpen}
+        contentLabel="onRequestClose Example"
+        onRequestClose={handleCloseModal}
+        shouldCloseOnOverlayClick={true}
+      >
+        <ImageModal
+          closeModal={handleCloseModal}
+          isModalOpen={isModalOpen}
+          content={modalContent}
+        />
+      </Modal>
     </div>
   );
 }

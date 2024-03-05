@@ -2,20 +2,19 @@ import css from "./ImageGallery.module.css";
 import ImageCard from "./ImageCard";
 import { MutatingDots } from "react-loader-spinner";
 
-const ImageGallery = ({ images,load, setLoad }) => {
-
+const ImageGallery = ({ images,loader, setLoader, onOpen }) => {
   return (
     <>
       <ul className={css.gallery}>
         {images.map((image) => {
           return (
             <li className={css.imageWrapper} key={image.id}>
-              <ImageCard setLoad={setLoad} image={image}/>
+              <ImageCard onOpen={onOpen} setLoader={setLoader} image={image}/>
             </li>
           );
         })}
       </ul>
-        {load && (
+        {loader && (
           <MutatingDots
             className="spin"
             visible={true}
