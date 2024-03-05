@@ -12,6 +12,5 @@ export const fetchImages = async (searchQuery, page) => {
       page,
     },
   });
-  console.log(response)
   return response.data;
 };
