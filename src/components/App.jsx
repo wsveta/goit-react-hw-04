@@ -8,8 +8,10 @@ import Loader from "./Loader";
 import ErrorMessage from "./ErrorMessage";
 import toast from "react-hot-toast";
 import ImageModal from "./ImageModal";
-import Modal from "react-modal";
-Modal.setAppElement("#root");
+import ReactModal from "react-modal";
+ReactModal.setAppElement("#root");
+import { MutatingDots } from "react-loader-spinner";
+
 
 function App() {
   const [totalImages, setTotalImages] = useState(0);
@@ -79,15 +81,27 @@ function App() {
       <ImageGallery
         onOpen={handleOpenModal}
         images={images}
-        loader={loader}
         setLoader={setLoader}
       />
+      {loader && (
+          <MutatingDots
+            className="spin"
+            visible={true}
+            height="100"
+            width="100"
+            color="#bebebe"
+            secondaryColor="grey"
+            radius="12.5"
+            ariaLabel="mutating-dots-loading"
+            wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+          />
+        )}
       {!isLoading && images.length > 0 && images.length < totalImages && (
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      <Modal
+      <ReactModal
         isOpen={isModalOpen}
         contentLabel="onRequestClose Example"
         onRequestClose={handleCloseModal}
@@ -98,7 +112,7 @@ function App() {
           isModalOpen={isModalOpen}
           content={modalContent}
         />
-      </Modal>
+      </ReactModal>
     </div>
   );
 }

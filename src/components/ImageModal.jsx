@@ -10,7 +10,7 @@ const ImageModal = ({ closeModal, content }) => {
         <img
           className={css.modalImage}
           src={content.urls.regular}
-          alt="description"
+          alt={content.alt_description}
         />
         <div className={css.modalInfoContainer}>
         <button className={css.modalBtn} onClick={closeModal}>
